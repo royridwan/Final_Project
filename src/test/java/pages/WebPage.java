@@ -89,12 +89,10 @@ public class WebPage {
     }
 
     public void userInputLoginUsername() {
-        username = "ridwan26";
         driver.findElement(login_username).sendKeys(username);
     }
 
     public void userInputLoginPwd() {
-        pwd = "ridwan26";
         driver.findElement(login_pwd).sendKeys(pwd);
     }
 
