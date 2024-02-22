@@ -66,7 +66,7 @@ public class WebPage {
 
     public void validationMessage(String messageType, String message) {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(2000);
             String actualMessage = "";
             switch (messageType){
                 case "alert":
