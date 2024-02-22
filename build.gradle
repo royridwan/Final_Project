@@ -24,7 +24,7 @@ dependencies {
     testImplementation group: 'org.assertj', name: 'assertj-core', version: '3.24.0'
 
     implementation group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '4.17.0'
-    implementation group: 'io.github.bonigarcia', name: 'webdrivermanager', version: '5.6.3'
+    testImplementation 'io.github.bonigarcia:webdrivermanager:5.4.1'
 }
 
 test {
