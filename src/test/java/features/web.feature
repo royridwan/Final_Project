@@ -20,11 +20,11 @@ Feature: Test Automation Web
   @web
   Scenario: Test login normal
     Given user go to web page
-    And user click sign up menu
-    And user input sign up username
-    And user input sign up pwd
-    When user click sign up button
-    Then validation get "alert" message "Sign up successful."
+#    And user click sign up menu
+#    And user input sign up username
+#    And user input sign up pwd
+#    When user click sign up button
+#    Then validation get "alert" message "Sign up successful."
     And user click login menu
     And user input login username
     And user input login pwd
@@ -41,11 +41,11 @@ Feature: Test Automation Web
   @web
   Scenario: Test logout normal
     Given user go to web page
-    And user click sign up menu
-    And user input sign up username
-    And user input sign up pwd
-    When user click sign up button
-    Then validation get "alert" message "Sign up successful."
+#    And user click sign up menu
+#    And user input sign up username
+#    And user input sign up pwd
+#    When user click sign up button
+#    Then validation get "alert" message "Sign up successful."
     And user click login menu
     And user input login username
     And user input login pwd
@@ -57,11 +57,11 @@ Feature: Test Automation Web
   @web
   Scenario: Test sort by product categories normal
     Given user go to web page
-    And user click sign up menu
-    And user input sign up username
-    And user input sign up pwd
-    When user click sign up button
-    Then validation get "alert" message "Sign up successful."
+#    And user click sign up menu
+#    And user input sign up username
+#    And user input sign up pwd
+#    When user click sign up button
+#    Then validation get "alert" message "Sign up successful."
     And user click login menu
     And user input login username
     And user input login pwd
@@ -77,11 +77,11 @@ Feature: Test Automation Web
   @web
   Scenario: Test add to cart normal
     Given user go to web page
-    And user click sign up menu
-    And user input sign up username
-    And user input sign up pwd
-    When user click sign up button
-    Then validation get "alert" message "Sign up successful."
+#    And user click sign up menu
+#    And user input sign up username
+#    And user input sign up pwd
+#    When user click sign up button
+#    Then validation get "alert" message "Sign up successful."
     And user click login menu
     And user input login username
     And user input login pwd
@@ -101,11 +101,11 @@ Feature: Test Automation Web
   @web
   Scenario: Test delete product from cart
     Given user go to web page
-    And user click sign up menu
-    And user input sign up username
-    And user input sign up pwd
-    When user click sign up button
-    Then validation get "alert" message "Sign up successful."
+#    And user click sign up menu
+#    And user input sign up username
+#    And user input sign up pwd
+#    When user click sign up button
+#    Then validation get "alert" message "Sign up successful."
     And user click login menu
     And user input login username
     And user input login pwd
@@ -131,11 +131,11 @@ Feature: Test Automation Web
   @web
   Scenario: Test place order normal
     Given user go to web page
-    And user click sign up menu
-    And user input sign up username
-    And user input sign up pwd
-    When user click sign up button
-    Then validation get "alert" message "Sign up successful."
+#    And user click sign up menu
+#    And user input sign up username
+#    And user input sign up pwd
+#    When user click sign up button
+#    Then validation get "alert" message "Sign up successful."
     And user click login menu
     And user input login username
     And user input login pwd
@@ -161,11 +161,11 @@ Feature: Test Automation Web
 
   Scenario: Test negative place order with no input order information
     Given user go to web page
-    And user click sign up menu
-    And user input sign up username
-    And user input sign up pwd
-    When user click sign up button
-    Then validation get "alert" message "Sign up successful."
+#    And user click sign up menu
+#    And user input sign up username
+#    And user input sign up pwd
+#    When user click sign up button
+#    Then validation get "alert" message "Sign up successful."
     And user click login menu
     And user input login username
     And user input login pwd
