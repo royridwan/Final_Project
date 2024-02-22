@@ -2,10 +2,7 @@ package pages;
 
 import helper.Utility;
 import org.junit.Assert;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.StaleElementReferenceException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 
 import java.util.List;
 
@@ -66,25 +63,25 @@ public class WebPage {
 
     public void validationMessage(String messageType, String message) {
         try {
-            Thread.sleep(2000);
-        } catch (InterruptedException e) {
+            switch (messageType){
+                case "alert":
+                    Thread.sleep(2000);
+                    Alert alert = driver.switchTo().alert();
+                    String actualMessage = alert.getText();
+                    alert.accept();
+                    assertThat(actualMessage).isEqualTo(message);
+                    break;
+                case "page":
+                    assertTrue(driver.getPageSource().contains(message));
+                    break;
+                default:
+                    System.out.println("input right message type");
+                    break;
+            }
+        } catch (NoAlertPresentException | InterruptedException e) {
             throw new RuntimeException(e);
         }
-        String actualMessage = "";
-        switch (messageType){
-            case "alert":
-                Alert alert = driver.switchTo().alert();
-                actualMessage = alert.getText();
-                alert.accept();
-                assertThat(actualMessage).isEqualTo(message);
-                break;
-            case "page":
-                assertTrue(driver.getPageSource().contains(message));
-                break;
-            default:
-                System.out.println("input right message type");
-                break;
-        }
+
     }
 
     public void userClickLoginMenu() {
