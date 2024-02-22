@@ -66,7 +66,7 @@ public class WebPage {
 
     public void validationMessage(String messageType, String message) {
         try {
-            Thread.sleep(1000);
+            Thread.sleep(3000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
         }
