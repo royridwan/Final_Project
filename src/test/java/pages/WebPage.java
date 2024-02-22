@@ -66,25 +66,24 @@ public class WebPage {
 
     public void validationMessage(String messageType, String message) {
         try {
-            Thread.sleep(2000);
-            String actualMessage = "";
-            switch (messageType){
-                case "alert":
-                    Alert alert = driver.switchTo().alert();
-                    actualMessage = alert.getText();
-                    alert.accept();
-                    assertThat(actualMessage).isEqualTo(message);
-                    break;
-                case "page":
-                    assertTrue(driver.getPageSource().contains(message));
-                    break;
-                default:
-                    System.out.println("input right message type");
-                    break;
-            }
-            System.out.println(actualMessage);
+            Thread.sleep(1000);
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+        }
+        String actualMessage = "";
+        switch (messageType){
+            case "alert":
+                Alert alert = driver.switchTo().alert();
+                actualMessage = alert.getText();
+                alert.accept();
+                assertThat(actualMessage).isEqualTo(message);
+                break;
+            case "page":
+                assertTrue(driver.getPageSource().contains(message));
+                break;
+            default:
+                System.out.println("input right message type");
+                break;
         }
     }
 
@@ -112,7 +111,7 @@ public class WebPage {
         }
         WebElement welcomeTextElement = driver.findElement(By.id("nameofuser"));
         String actualWelcomeText = welcomeTextElement.getText();
-        System.out.println(actualWelcomeText);
+        //System.out.println(actualWelcomeText);
         assertThat(actualWelcomeText).isEqualTo("Welcome " + username);
     }
 
@@ -170,7 +169,7 @@ public class WebPage {
         }
         global_price = total_price;
         assertThat(total_price).isEqualTo(sumPrice_product);
-        System.out.println(total_price + " : " + sumPrice_product);
+        //System.out.println(total_price + " : " + sumPrice_product);
     }
 
     public void userClickDeleteProductFromCart() {
@@ -242,64 +241,64 @@ public class WebPage {
     public void userClickCategories(String categories) {
         try {
             Thread.sleep(1000);
-            switch (categories){
-                case "Phones":
-                    WebElement phones = driver.findElement(By.xpath("(//a[@onclick=\"byCat('phone')\"])"));
-                    phones.click();
-                    break;
-                case "Laptops":
-                    WebElement laptops = driver.findElement(By.xpath("(//a[@onclick=\"byCat('notebook')\"])"));
-                    laptops.click();
-                    break;
-                case "Monitors":
-                    WebElement monitors = driver.findElement(By.xpath("(//a[@onclick=\"byCat('monitor')\"])"));
-                    monitors.click();
-                    break;
-                default:
-                    System.out.println("input right categories");
-                    driver.quit();
-            }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+        }
+        switch (categories){
+            case "Phones":
+                WebElement phones = driver.findElement(By.xpath("(//a[@onclick=\"byCat('phone')\"])"));
+                phones.click();
+                break;
+            case "Laptops":
+                WebElement laptops = driver.findElement(By.xpath("(//a[@onclick=\"byCat('notebook')\"])"));
+                laptops.click();
+                break;
+            case "Monitors":
+                WebElement monitors = driver.findElement(By.xpath("(//a[@onclick=\"byCat('monitor')\"])"));
+                monitors.click();
+                break;
+            default:
+                System.out.println("input right categories");
+                driver.quit();
         }
     }
 
     public void validationPageDisplayProduct(String validateDisplay_cat) {
         try {
             Thread.sleep(1000);
-            List<WebElement> product_title = driver.findElements(By.xpath("(//a[@class=\"hrefch\"])"));
-            String product_text = "";
-            switch (validateDisplay_cat){
-                case "Phones":
-                    for (WebElement phones_title : product_title) {
-                        product_text = phones_title.getText();
-                        System.out.println(product_text);
-                        break;
-                    }
-                    assertThat(product_text).startsWith("Samsung galaxy s6");
-                    break;
-                case "Laptops":
-                    for (WebElement laptops_title : product_title) {
-                        product_text = laptops_title.getText();
-                        System.out.println(product_text);
-                        break;
-                    }
-                    assertThat(product_text).startsWith("Sony vaio i5");
-                    break;
-                case "Monitors":
-                    for (WebElement monitors_title : product_title) {
-                        product_text = monitors_title.getText();
-                        System.out.println(product_text);
-                        break;
-                    }
-                    assertThat(product_text).startsWith("Apple monitor 24");
-                    break;
-                default:
-                    System.out.println("input right validate categories");
-                    driver.quit();
-            }
         } catch (InterruptedException e) {
             throw new RuntimeException(e);
+        }
+        List<WebElement> product_title = driver.findElements(By.xpath("(//a[@class=\"hrefch\"])"));
+        String product_text = "";
+        switch (validateDisplay_cat){
+            case "Phones":
+                for (WebElement phones_title : product_title) {
+                    product_text = phones_title.getText();
+                    //System.out.println(product_text);
+                    break;
+                }
+                assertThat(product_text).startsWith("Samsung galaxy s6");
+                break;
+            case "Laptops":
+                for (WebElement laptops_title : product_title) {
+                    product_text = laptops_title.getText();
+                    //System.out.println(product_text);
+                    break;
+                }
+                assertThat(product_text).startsWith("Sony vaio i5");
+                break;
+            case "Monitors":
+                for (WebElement monitors_title : product_title) {
+                    product_text = monitors_title.getText();
+                    //System.out.println(product_text);
+                    break;
+                }
+                assertThat(product_text).startsWith("Apple monitor 24");
+                break;
+            default:
+                System.out.println("input right validate categories");
+                driver.quit();
         }
     }
 
