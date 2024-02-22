@@ -78,8 +78,26 @@ public class WebPage {
                     System.out.println("input right message type");
                     break;
             }
-        } catch (NoAlertPresentException | InterruptedException e) {
-            throw new RuntimeException(e);
+        } catch (NoAlertPresentException e) {
+            // Retry mechanism - Retry up to 3 times if the alert is not present immediately
+            int attempts = 0;
+            while (attempts < 3) {
+                try {
+                    Thread.sleep(1000); // Wait for 1 second before retrying
+                    Alert alert = driver.switchTo().alert();
+                    String actualMessage = alert.getText();
+                    alert.accept();
+                    assertThat(actualMessage).isEqualTo(message);
+                    break;
+                } catch (NoAlertPresentException | InterruptedException ex) {
+                    attempts++;
+                }
+            }
+            if (attempts == 3) {
+                throw new RuntimeException("Failed to find the alert after multiple attempts");
+            }
+        } catch (InterruptedException ex) {
+            throw new RuntimeException(ex);
         }
 
     }
