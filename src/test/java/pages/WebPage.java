@@ -3,7 +3,10 @@ package pages;
 import helper.Utility;
 import org.junit.Assert;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.util.List;
 
 import static helper.Utility.driver;
@@ -65,8 +68,8 @@ public class WebPage {
         try {
             switch (messageType){
                 case "alert":
-                    Thread.sleep(2000);
-                    Alert alert = driver.switchTo().alert();
+                    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+                    Alert alert = wait.until(ExpectedConditions.alertIsPresent());
                     String actualMessage = alert.getText();
                     alert.accept();
                     assertThat(actualMessage).isEqualTo(message);
@@ -78,10 +81,9 @@ public class WebPage {
                     System.out.println("input right message type");
                     break;
             }
-        } catch (NoAlertPresentException | InterruptedException e) {
+        } catch (NoAlertPresentException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public void userClickLoginMenu() {
